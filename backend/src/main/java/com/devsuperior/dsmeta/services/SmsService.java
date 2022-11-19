@@ -33,18 +33,17 @@ public class SmsService {
 	public void sendSms(Long saleId) {
 		Sale sale = saleRepository.findById(saleId).get();
 		String date = sale.getDate().getMonthValue() + "/" + sale.getDate().getYear();
-		String amount = new DecimalFormat("#,##0.00").format(sale.getAmount();
+		//Auto amount = new DecimalFormat("#,##0.00").format(sale.getAmount();
 		String msg = "O vendedor " + sale.getSellerName() + " foi destaque em " + date
-				//+ " com um total de R$ " + sale.getAmount();
-			    + " com um total de R$ " + amount;
+				+ " com um total de R$ " + sale.getAmount();
+
 
 		Twilio.init(twilioSid, twilioKey);
 
 		PhoneNumber to = new PhoneNumber(twilioPhoneTo);
 		PhoneNumber from = new PhoneNumber(twilioPhoneFrom);
 
-		Message message = Message.creator(to, from, msg).create();
-
+		Message message = Message.creator(to, from, String.format("%.2f", sale.getAmount())).create();
 		System.out.println(message.getSid());
 	}
 }
