@@ -33,8 +33,8 @@ public class SmsService {
 	public void sendSms(Long saleId) {
 		Sale sale = saleRepository.findById(saleId).get();
 		String date = sale.getDate().getMonthValue() + "/" + sale.getDate().getYear();
-		//String amount = String.format("%.2f", sale.getAmount());
-		String amount = "100000000.00";
+		String amount = String.format("%.2f", sale.getAmount());
+		amount.replace(".", ",");
 		String msg = "O vendedor " +sale.getSellerName() + " foi destaque em " + date
 				+ " com um total de R$ " + amount;
 
