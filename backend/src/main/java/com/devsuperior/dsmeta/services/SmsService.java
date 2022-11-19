@@ -33,7 +33,7 @@ public class SmsService {
 	public void sendSms(Long saleId) {
 		Sale sale = saleRepository.findById(saleId).get();
 		String date = sale.getDate().getMonthValue() + "/" + sale.getDate().getYear();
-		//Auto amount = new DecimalFormat("#,##0.00").format(sale.getAmount();
+		String amount = String.format("%.2f", sale.getAmount());
 		String msg = "O vendedor " + sale.getSellerName() + " foi destaque em " + date
 				+ " com um total de R$ " + sale.getAmount();
 
@@ -43,7 +43,10 @@ public class SmsService {
 		PhoneNumber to = new PhoneNumber(twilioPhoneTo);
 		PhoneNumber from = new PhoneNumber(twilioPhoneFrom);
 
-		Message message = Message.creator(to, from, String.format("%.2f", sale.getAmount())).create();
+		Message message = Message.creator(to, from, amount).create();
+		
 		System.out.println(message.getSid());
+		System.out.println(msg);
+		System.out.println(amount);
 	}
 }
