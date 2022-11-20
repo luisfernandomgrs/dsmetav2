@@ -68,7 +68,11 @@ function SalesCard() {
                 <tr key={sale.id}>
                   <td className="show992">#{sale.id}</td>
                   <td className="show576">
-                    {new Date(sale.date).toLocaleDateString()}
+                    {sale.date.toString().slice(8, 10) +
+                      `/` +
+                      sale.date.toString().slice(5, 7) +
+                      `/` +
+                      sale.date.toString().slice(0, 4)}
                   </td>
                   <td>{sale.sellerName}</td>
                   <td className="show992">{sale.visited}</td>
@@ -76,7 +80,7 @@ function SalesCard() {
                   <td>R$ {sale.amount.toFixed(2)}</td>
                   <td>
                     <div className="dsmeta-red-btn-container">
-                      <NotificationButton />
+                      <NotificationButton saleId={sale.id} />
                     </div>
                   </td>
                 </tr>
