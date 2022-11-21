@@ -1,7 +1,7 @@
 # dsmetav2
 Project to revision - Learning about Java Spring React
 
-Before open this project, please wait after click url, because mey server Netlify can be sleeping mode at moment...
+Before open this project, please wait after click url, because my server Netlify can be sleeping mode at moment...
 
 https://luisf.netlify.app/
 
