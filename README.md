@@ -2,6 +2,7 @@
 Project to revision - Learning about Java Spring React
 
 Before open this project, please wait after click url, because my server Netlify can be sleeping mode at moment...
+and the messages are be send to me, :)
 
 https://luisf.netlify.app/
 
